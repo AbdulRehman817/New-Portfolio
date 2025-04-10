@@ -75,7 +75,7 @@ export default function EducationAndCourses() {
           animate={inView ? "visible" : "hidden"}
           className="space-y-8"
         >
-          {learningPath.map((item, index) => (
+          {learningPath.map((item) => (
             <motion.div
               key={item.title}
               variants={itemVariants}
