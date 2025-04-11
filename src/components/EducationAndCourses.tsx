@@ -12,9 +12,7 @@ export default function EducationAndCourses() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
+      transition: { staggerChildren: 0.3 },
     },
   };
 
@@ -23,10 +21,7 @@ export default function EducationAndCourses() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
 
@@ -45,7 +40,7 @@ export default function EducationAndCourses() {
     },
     {
       title: "Saylani Mass IT Training Program",
-      period: "2023 ",
+      period: "2023",
       description:
         "Learning Web & App Development including HTML, CSS, JavaScript, React.js, Next.js, and React Native.",
     },
@@ -81,24 +76,17 @@ export default function EducationAndCourses() {
               variants={itemVariants}
               className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-blue-500/20"
             >
-              <motion.div
-                className="absolute left-0 top-0 w-8 h-8 -translate-x-1/2 rounded-full bg-gray-900 border-2 border-blue-500/20 flex items-center justify-center"
-                whileHover={{ scale: 1.2, rotate: 360 }}
-                transition={{ duration: 0.6 }}
-              >
+              <div className="absolute left-0 top-0 w-8 h-8 -translate-x-1/2 rounded-full bg-gray-900 border-2 border-blue-500/20 flex items-center justify-center">
                 <GraduationCap size={16} className="text-blue-500" />
-              </motion.div>
-              <motion.div
-                className="p-6 rounded-2xl bg-gray-900 hover:bg-gray-900/80 transition-colors"
-                whileHover={{ scale: 1.02, x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
+              </div>
+
+              <div className="p-6 rounded-2xl bg-gray-900 hover:bg-gray-900/80 transition-transform duration-200 hover:scale-[1.02] hover:translate-x-1">
                 <h3 className="text-xl font-semibold text-white mb-1">
                   {item.title}
                 </h3>
                 <div className="text-blue-500 mb-4">{item.period}</div>
                 <p className="text-gray-400">{item.description}</p>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
