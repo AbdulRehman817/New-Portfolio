@@ -4,11 +4,9 @@ import {
   FaCode,
   FaReact,
   FaJsSquare,
-  FaPaintBrush,
   FaServer,
   FaNodeJs,
   FaDatabase,
-  FaShieldAlt,
   FaCloud,
   FaLayerGroup,
   FaLock,
@@ -27,12 +25,12 @@ const Badge: React.FC<BadgeProps> = ({ icon, label }) => (
   </div>
 );
 
-const Services: React.FC = () => {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
+const Services: React.FC = () => {
   return (
     <section id="services" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -56,7 +54,7 @@ const Services: React.FC = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {/* Frontend Card */}
+          {/* Frontend */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -10, scale: 1.02 }}
@@ -69,30 +67,17 @@ const Services: React.FC = () => {
               Frontend Development
             </h3>
             <p className="text-gray-400 mb-6 text-sm sm:text-base">
-              Building responsive and interactive user interfaces using modern
-              frameworks like React and Next.js.
+              Building responsive interfaces using React, Next.js, TypeScript & TailwindCSS.
             </p>
             <div className="flex flex-wrap gap-2">
-              <Badge
-                icon={<FaReact className="text-blue-400" />}
-                label="React"
-              />
-              <Badge
-                icon={<FaJsSquare className="text-blue-400" />}
-                label="Next.js"
-              />
-              <Badge
-                icon={<FaCode className="text-blue-400" />}
-                label="TypeScript"
-              />
-              <Badge
-                icon={<FaPaintBrush className="text-blue-400" />}
-                label="TailwindCSS"
-              />
+              <Badge icon={<FaReact className="text-blue-400" />} label="React" />
+              <Badge icon={<FaJsSquare className="text-blue-400" />} label="Next.js" />
+              <Badge icon={<FaCode className="text-blue-400" />} label="TypeScript" />
+              <Badge icon={<FaCode className="text-blue-400" />} label="TailwindCSS" />
             </div>
           </motion.div>
 
-          {/* Backend Card */}
+          {/* Backend */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -10, scale: 1.02 }}
@@ -105,30 +90,17 @@ const Services: React.FC = () => {
               Backend Development
             </h3>
             <p className="text-gray-400 mb-6 text-sm sm:text-base">
-              Developing scalable server-side applications and APIs using
-              Node.js and modern databases.
+              Building scalable APIs using Node.js, GraphQL, PostgreSQL, and MongoDB.
             </p>
             <div className="flex flex-wrap gap-2">
-              <Badge
-                icon={<FaNodeJs className="text-pink-400" />}
-                label="Node.js"
-              />
-              <Badge
-                icon={<FaDatabase className="text-pink-400" />}
-                label="GraphQL"
-              />
-              <Badge
-                icon={<FaShieldAlt className="text-pink-400" />}
-                label="PostgreSQL"
-              />
-              <Badge
-                icon={<FaCloud className="text-pink-400" />}
-                label="MongoDB"
-              />
+              <Badge icon={<FaNodeJs className="text-pink-400" />} label="Node.js" />
+              <Badge icon={<FaDatabase className="text-pink-400" />} label="GraphQL" />
+              <Badge icon={<FaDatabase className="text-pink-400" />} label="PostgreSQL" />
+              <Badge icon={<FaCloud className="text-pink-400" />} label="MongoDB" />
             </div>
           </motion.div>
 
-          {/* API Integration Card */}
+          {/* API Integration */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -10, scale: 1.02 }}
@@ -141,26 +113,13 @@ const Services: React.FC = () => {
               API Integration
             </h3>
             <p className="text-gray-400 mb-6 text-sm sm:text-base">
-              Seamlessly connecting web applications to third-party services and
-              external APIs for added functionality.
+              Connecting apps to third-party services like Auth0, Firebase & REST APIs.
             </p>
             <div className="flex flex-wrap gap-2">
-              <Badge
-                icon={<FaCloud className="text-emerald-400" />}
-                label="REST APIs"
-              />
-              <Badge
-                icon={<FaLock className="text-emerald-400" />}
-                label="Auth0"
-              />
-              <Badge
-                icon={<FaFire className="text-emerald-400" />}
-                label="Firebase"
-              />
-              <Badge
-                icon={<FaServer className="text-emerald-400" />}
-                label="AppWrite"
-              />
+              <Badge icon={<FaCloud className="text-emerald-400" />} label="REST APIs" />
+              <Badge icon={<FaLock className="text-emerald-400" />} label="Auth0" />
+              <Badge icon={<FaFire className="text-emerald-400" />} label="Firebase" />
+              <Badge icon={<FaServer className="text-emerald-400" />} label="AppWrite" />
             </div>
           </motion.div>
         </motion.div>
