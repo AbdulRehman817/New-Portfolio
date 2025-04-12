@@ -6,7 +6,7 @@ A clean, animated, and responsive personal portfolio built using **React**, **Ty
 
 ## 🌐 Live Demo
 
-🎯 [View Portfolio Online](https://your-portfolio-link.com)
+🎯 [View Portfolio Online](https://new-portfolio-zf8t.vercel.app)
 
 ![Portfolio Preview](https://your-demo-image-or-gif-link.com)
 
@@ -78,7 +78,7 @@ npm run preview   # Preview production build
 
 
 📫 Connect with Me
-Portfolio: your-portfolio-link.com
+Portfolio: https://new-portfolio-zf8t.vercel.app
 
 LinkedIn:https://linkedin.com/in/abdul-rehman-7aa108328/
 
