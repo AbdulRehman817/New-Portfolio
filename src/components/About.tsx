@@ -1,26 +1,19 @@
 import { useInView } from "react-intersection-observer";
-import { Code2, Star, Coffee, Users, Zap, Heart, LucideIcon } from "lucide-react";
+import { Code2, Star, Coffee, Users, Zap, Heart } from "lucide-react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 
-type Stat = {
-  icon: LucideIcon;
-  value: number;
-  label: string;
-  color: string;
-};
-
-export default function About(): JSX.Element {
+export default function About() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
-  const stats: Stat[] = [
+  const stats = [
     { icon: Coffee, value: 0, label: "Coffee Cups", color: "from-amber-500 to-orange-500" },
     { icon: Code2, value: 10, label: "Projects Completed", color: "from-blue-500 to-cyan-500" },
     { icon: Users, value: 5, label: "Happy Clients", color: "from-green-500 to-emerald-500" },
     { icon: Star, value: 1, label: "Years Experience", color: "from-purple-500 to-pink-500" },
   ];
 
-  const skills: string[] = ["React", "TypeScript", "Next.js", "TailwindCSS", "MongoDB"];
+  const skills = ["React", "JavaScript", "Next.js", "TailwindCSS", "MongoDB"];
 
   return (
     <section ref={ref} className="py-16 px-4 bg-gray-950 text-white">
@@ -41,19 +34,21 @@ export default function About(): JSX.Element {
 
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 justify-center">
-          {stats.map(({ icon: Icon, value, label, color }) => (
+          {stats.map((stat) => (
             <div
-              key={label}
+              key={stat.label}
               className="bg-gray-900 rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div className={`w-10 h-10 mx-auto mb-2 flex items-center justify-center rounded-full bg-gradient-to-br ${color}`}>
-                <Icon className="w-5 h-5 text-white" />
+              <div
+                className={`w-10 h-10 mx-auto mb-2 flex items-center justify-center rounded-full bg-gradient-to-br ${stat.color}`}
+              >
+                <stat.icon className="w-5 h-5 text-white" />
               </div>
-              <h3 className={`text-2xl font-semibold`}>
-                {inView && <CountUp end={value} duration={2} />}
-                {value === 5 && "+"}
+              <h3 className="text-2xl font-semibold">
+                {inView && <CountUp end={stat.value} duration={2} />}
+                {stat.value === 5 && "+"}
               </h3>
-              <p className="text-sm text-gray-400 mt-1">{label}</p>
+              <p className="text-sm text-gray-400 mt-1">{stat.label}</p>
             </div>
           ))}
         </div>
