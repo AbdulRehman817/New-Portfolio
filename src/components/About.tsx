@@ -16,7 +16,7 @@ export default function About() {
   const skills = ["React", "JavaScript", "Next.js", "TailwindCSS", "MongoDB"];
 
   return (
-    <section ref={ref} className="py-16 px-4 bg-gray-950 text-white">
+    <section ref={ref} className="py-16 px-4 bg-black text-white">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
