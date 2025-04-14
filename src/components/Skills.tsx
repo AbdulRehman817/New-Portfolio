@@ -1,301 +1,86 @@
 import {
-  SiReact,
-  SiTypescript,
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaGithub,
+  FaNodeJs,
+  FaFire,
+} from "react-icons/fa";
+import {
+  SiTailwindcss,
   SiNextdotjs,
-  SiFigma,
-  SiNodedotjs,
-  SiGit,
-  SiAppwrite,
-  SiFirebase,
+  SiMongodb,
+  SiExpress,
+  SiAuth0,
 } from "react-icons/si";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 
-export default function Skills() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+const skills = [
+  // Frontend
+  { name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
+  { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
+  { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+  { name: "React", icon: <FaReact className="text-cyan-400" /> },
+  { name: "Tailwind", icon: <SiTailwindcss className="text-teal-400" /> },
+  {
+    name: "Next.js",
+    icon: <SiNextdotjs className="text-black dark:text-white" />,
+  },
 
-  const skillVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  };
+  // Backend
+  { name: "Node.js", icon: <FaNodeJs className="text-green-600" /> },
+  {
+    name: "Express",
+    icon: <SiExpress className="text-gray-700 dark:text-white" />,
+  },
+  { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
+  { name: "Firebase", icon: <FaFire className="text-orange-400" /> },
 
-  const iconVariants = {
-    hidden: { opacity: 0, scale: 0.5 },
-    visible: {
-      opacity: 1,
-      scale: 1.2,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
+  // Tools
+  { name: "GitHub", icon: <FaGithub className="text-black dark:text-white" /> },
+  { name: "Auth.js", icon: <SiAuth0 className="text-purple-500" /> },
+];
 
+const Skills = () => {
   return (
-    <section ref={ref} className="py-20 bg-gray-900">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-          Skills & Expertise
+    <section
+      className="py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+      id="skills"
+    >
+      <div className="text-center mb-12">
+        <h2 className="text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+          My Skills
         </h2>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Skill 1: React */}
-          <motion.div
-            variants={skillVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="bg-gray-800 p-6 rounded-xl"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <motion.div
-                variants={iconVariants}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                className="p-3 bg-gray-900 rounded-lg"
-              >
-                <SiReact className="text-blue-400 w-6 h-6" />
-              </motion.div>
-              <div className="text-white font-medium">React</div>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-white text-sm">60%</span>
-            </div>
-            <div className="h-2 bg-gray-700 rounded-full">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={inView ? { width: "60%" } : {}}
-                transition={{ duration: 1 }}
-                className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
-              />
-            </div>
-          </motion.div>
-
-          {/* Skill 2: TypeScript */}
-          <motion.div
-            variants={skillVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="bg-gray-800 p-6 rounded-xl"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <motion.div
-                variants={iconVariants}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                className="p-3 bg-gray-900 rounded-lg"
-              >
-                <SiTypescript className="text-indigo-400 w-6 h-6" />
-              </motion.div>
-              <div className="text-white font-medium">TypeScript</div>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-white text-sm">55%</span>
-            </div>
-            <div className="h-2 bg-gray-700 rounded-full">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={inView ? { width: "55%" } : {}}
-                transition={{ duration: 1 }}
-                className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-400"
-              />
-            </div>
-          </motion.div>
-
-          {/* Skill 3: Next.js */}
-          <motion.div
-            variants={skillVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="bg-gray-800 p-6 rounded-xl"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <motion.div
-                variants={iconVariants}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                className="p-3 bg-gray-900 rounded-lg"
-              >
-                <SiNextdotjs className="text-white w-6 h-6" />
-              </motion.div>
-              <div className="text-white font-medium">Next.js</div>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-white text-sm">60%</span>
-            </div>
-            <div className="h-2 bg-gray-700 rounded-full">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={inView ? { width: "60%" } : {}}
-                transition={{ duration: 1 }}
-                className="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-400"
-              />
-            </div>
-          </motion.div>
-
-          {/* Skill 4: Figma */}
-          <motion.div
-            variants={skillVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="bg-gray-800 p-6 rounded-xl"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <motion.div
-                variants={iconVariants}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                className="p-3 bg-gray-900 rounded-lg"
-              >
-                <SiFigma className="text-pink-400 w-6 h-6" />
-              </motion.div>
-              <div className="text-white font-medium">Figma</div>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-white text-sm">40%</span>
-            </div>
-            <div className="h-2 bg-gray-700 rounded-full">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={inView ? { width: "40%" } : {}}
-                transition={{ duration: 1 }}
-                className="h-full rounded-full bg-gradient-to-r from-pink-500 to-rose-400"
-              />
-            </div>
-          </motion.div>
-
-          {/* Skill 5: Node.js */}
-          <motion.div
-            variants={skillVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="bg-gray-800 p-6 rounded-xl"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <motion.div
-                variants={iconVariants}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                className="p-3 bg-gray-900 rounded-lg"
-              >
-                <SiNodedotjs className="text-green-400 w-6 h-6" />
-              </motion.div>
-              <div className="text-white font-medium">Node.js</div>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-white text-sm">50%</span>
-            </div>
-            <div className="h-2 bg-gray-700 rounded-full">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={inView ? { width: "50%" } : {}}
-                transition={{ duration: 1 }}
-                className="h-full rounded-full bg-gradient-to-r from-green-500 to-emerald-400"
-              />
-            </div>
-          </motion.div>
-
-          {/* Skill 6: Git */}
-          <motion.div
-            variants={skillVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="bg-gray-800 p-6 rounded-xl"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <motion.div
-                variants={iconVariants}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                className="p-3 bg-gray-900 rounded-lg"
-              >
-                <SiGit className="text-orange-400 w-6 h-6" />
-              </motion.div>
-              <div className="text-white font-medium">Git</div>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-white text-sm">50%</span>
-            </div>
-            <div className="h-2 bg-gray-700 rounded-full">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={inView ? { width: "50%" } : {}}
-                transition={{ duration: 1 }}
-                className="h-full rounded-full bg-gradient-to-r from-orange-500 to-red-400"
-              />
-            </div>
-          </motion.div>
-          {/* Skill 7: AppWrite */}
-          <motion.div
-            variants={skillVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="bg-gray-800 p-6 rounded-xl"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <motion.div
-                variants={iconVariants}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                className="p-3 bg-gray-900 rounded-lg"
-              >
-                <SiAppwrite className="text-pink-500 w-6 h-6" />
-              </motion.div>
-              <div className="text-white font-medium">AppWrite</div>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-white text-sm">70%</span>
-            </div>
-            <div className="h-2 bg-gray-700 rounded-full">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={inView ? { width: "70%" } : {}}
-                transition={{ duration: 1 }}
-                className="h-full rounded-full bg-gradient-to-r from-pink-500 to-red-400"
-              />
-            </div>
-          </motion.div>
-          {/* Skill 8: Firebase */}
-          <motion.div
-            variants={skillVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="bg-gray-800 p-6 rounded-xl"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <motion.div
-                variants={iconVariants}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                className="p-3 bg-gray-900 rounded-lg"
-              >
-                <SiFirebase className="text-yellow-500 w-6 h-6" />
-              </motion.div>
-              <div className="text-white font-medium">Firebase</div>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-white text-sm">70%</span>
-            </div>
-            <div className="h-2 bg-gray-700 rounded-full">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={inView ? { width: "70%" } : {}}
-                transition={{ duration: 1 }}
-                className="h-full rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500"
-              />
-            </div>
-          </motion.div>
-        </div>
+        <p className="text-gray-400 text-base sm:text-lg mt-2">
+          Frontend, Backend & Everything In Between
+        </p>
       </div>
+
+      <motion.div
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 px-6 md:px-16"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        {skills.map((skill, index) => (
+          <motion.div
+            key={index}
+            className="bg-gray-800/80 border border-gray-700 rounded-2xl p-5 flex flex-col items-center justify-center shadow-md hover:shadow-xl transition-all hover:-translate-y-1"
+            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+          >
+            <div className="text-4xl mb-3">{skill.icon}</div>
+            <p className="text-sm text-center font-medium text-gray-200">
+              {skill.name}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
-}
+};
+
+export default Skills;

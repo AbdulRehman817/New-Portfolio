@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { ExternalLink, Github, X, Code2, Rocket, Zap } from "lucide-react";
+import { ExternalLink, Github, X, Code2 } from "lucide-react";
 import { useState } from "react";
 import Ecommerce from "../images/Ecommerce.png";
 import memeMaker from "../images/memeMaker.png";
@@ -23,6 +23,7 @@ export default function Projects() {
   });
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -104,6 +105,9 @@ export default function Projects() {
     },
   ];
 
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
   return (
     <section ref={ref} className="py-20 bg-gray-900 relative overflow-hidden">
       <motion.div
@@ -154,7 +158,10 @@ export default function Projects() {
               variants={cardVariants}
               whileHover={{ y: -10 }}
               className="group relative rounded-2xl overflow-hidden bg-gray-800 cursor-pointer"
-              onClick={() => setSelectedProject(project)}
+              onClick={() => {
+                setSelectedProject(project);
+                openModal();
+              }}
             >
               <motion.div
                 className="aspect-video overflow-hidden"
@@ -165,11 +172,6 @@ export default function Projects() {
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500"
-                />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
                 />
               </motion.div>
               <div className="p-6">
@@ -182,46 +184,6 @@ export default function Projects() {
                     {project.title}
                   </h3>
                   <p className="text-gray-400 mb-4">{project.description}</p>
-                  <motion.div
-                    className="flex flex-wrap gap-2 mb-4"
-                    variants={containerVariants}
-                  >
-                    {project.tech.map((tech) => (
-                      <motion.span
-                        key={tech}
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="px-3 py-1 text-sm bg-gray-700 rounded-full text-gray-300"
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </motion.div>
-                  <div className="flex gap-4">
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-                      whileHover={{ scale: 1.1, x: 5 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github size={18} />
-                      <span>Code</span>
-                    </motion.a>
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-                      whileHover={{ scale: 1.1, x: 5 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <ExternalLink size={18} />
-                      <span>Demo</span>
-                    </motion.a>
-                  </div>
                 </motion.div>
               </div>
             </motion.div>
@@ -229,13 +191,13 @@ export default function Projects() {
         </motion.div>
 
         <AnimatePresence>
-          {selectedProject && (
+          {modalOpen && selectedProject && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedProject(null)}
+              onClick={closeModal}
             >
               <motion.div
                 variants={modalVariants}
@@ -245,97 +207,46 @@ export default function Projects() {
                 className="bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
                 onClick={(e) => e.stopPropagation()}
               >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl"
-                  animate={{
-                    opacity: [0.5, 0.8, 0.5],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-
-                <div className="relative">
-                  <div className="relative">
-                    <img
-                      src={selectedProject.image}
-                      alt={selectedProject.title}
-                      className="w-full aspect-video object-cover rounded-t-2xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent" />
+                <div className="p-6">
+                  <h2 className="text-3xl text-white">
+                    {selectedProject.title}
+                  </h2>
+                  <p className="text-gray-400 mt-4">
+                    {selectedProject.longDescription}
+                  </p>
+                  {/* Displaying the image inside the modal */}
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-auto my-4 rounded-lg"
+                  />
+                  <div className="mt-6 flex justify-between">
+                    <a
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-blue-500 text-white px-4 py-2 rounded flex items-center gap-2"
+                    >
+                      <Github className="w-5 h-5" />
+                      GitHub
+                    </a>
+                    <a
+                      href={selectedProject.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-teal-500 text-white px-4 py-2 rounded flex items-center gap-2"
+                    >
+                      <ExternalLink className="w-5 h-5" />
+                      Live Demo
+                    </a>
                   </div>
-                  <motion.button
-                    whileHover={{ scale: 1.1, rotate: 90 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => setSelectedProject(null)}
-                    className="absolute top-4 right-4 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
-                  >
-                    <X size={20} />
-                  </motion.button>
                 </div>
-
-                <div className="p-6 relative">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <div className="flex items-center gap-3 mb-4">
-                      <Rocket className="w-6 h-6 text-blue-500" />
-                      <h3 className="text-2xl font-bold text-white">
-                        {selectedProject.title}
-                      </h3>
-                    </div>
-                    <p className="text-gray-300 mb-6 leading-relaxed">
-                      {selectedProject.longDescription}
-                    </p>
-
-                    <div className="space-y-4 mb-6">
-                      <div className="flex items-center gap-2 text-gray-400">
-                        <Zap className="w-5 h-5 text-blue-500" />
-                        <span className="font-medium">Technologies Used:</span>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedProject.tech.map((tech) => (
-                          <motion.span
-                            key={tech}
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            className="px-4 py-2 bg-gray-700 rounded-full text-gray-300"
-                          >
-                            {tech}
-                          </motion.span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex gap-4">
-                      <motion.a
-                        href={selectedProject.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-gray-700 rounded-lg text-white hover:bg-gray-600 transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Github size={20} />
-                        <span>View Code</span>
-                      </motion.a>
-                      <motion.a
-                        href={selectedProject.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-blue-500 rounded-lg text-white hover:bg-blue-600 transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <ExternalLink size={20} />
-                        <span>Live Demo</span>
-                      </motion.a>
-                    </div>
-                  </motion.div>
-                </div>
+                <button
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 text-white"
+                >
+                  <X className="w-6 h-6" />
+                </button>
               </motion.div>
             </motion.div>
           )}

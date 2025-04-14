@@ -1,4 +1,3 @@
-import  { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Github,
@@ -9,85 +8,9 @@ import {
   Rocket,
   Star,
 } from "lucide-react";
-import { useTypewriter } from "react-simple-typewriter"; // Importing the typewriter hook
-import gsap from "gsap";
+import { useTypewriter } from "react-simple-typewriter";
 
 export default function Hero() {
-  const backgroundRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (backgroundRef.current) {
-      const particles = Array.from({ length: 50 }).map(() => {
-        const particle = document.createElement("div");
-        particle.className = "absolute w-1 h-1 bg-blue-500/30 rounded-full";
-        return particle;
-      });
-
-      particles.forEach((particle) => {
-        backgroundRef.current?.appendChild(particle);
-        gsap.set(particle, {
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-        });
-
-        gsap.to(particle, {
-          x: "+=" + (Math.random() * 100 - 50),
-          y: "+=" + (Math.random() * 100 - 50),
-          opacity: Math.random(),
-          duration: 2 + Math.random() * 4,
-          repeat: -1,
-          yoyo: true,
-          ease: "none",
-        });
-      });
-    }
-
-    if (containerRef.current) {
-      gsap.to(containerRef.current, {
-        y: -20,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-      });
-    }
-  }, []);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/AbdulRehman817", rotate: 5 },
-    {
-      icon: Linkedin,
-      href: "https://linkedin.com/in/abdul-rehman-7aa108328/",
-      rotate: -5,
-    },
-    { icon: Mail, href: "mailto:abdulrehmanbey1718@gmail.com", rotate: 5 },
-  ];
-
-  // Setting up the Typewriter hook
   const [text] = useTypewriter({
     words: [
       "Full Stack Developer",
@@ -100,10 +23,27 @@ export default function Hero() {
     deleteSpeed: 50,
   });
 
+  const socialLinks = [
+    { icon: Github, href: "https://github.com/AbdulRehman817", rotate: 5 },
+    {
+      icon: Linkedin,
+      href: "https://linkedin.com/in/abdul-rehman-7aa108328/",
+      rotate: -5,
+    },
+    { icon: Mail, href: "mailto:abdulrehmanbey1718@gmail.com", rotate: 5 },
+  ];
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
     <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
-      <div ref={backgroundRef} className="absolute inset-0 overflow-hidden" />
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -112,11 +52,16 @@ export default function Hero() {
       />
 
       <motion.div
-        ref={containerRef}
-        variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="relative z-10 text-center px-4 max-w-5xl mx-auto"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.3, delayChildren: 0.2 },
+          },
+        }}
       >
         <motion.div
           className="mb-12"
@@ -143,40 +88,20 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="mb-6 relative">
-          <motion.span
-            className="absolute -top-8 -left-8 text-4xl"
-            animate={{ rotate: [0, 20, 0], scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            ⚡
-          </motion.span>
-          <motion.span
-            className="absolute -top-8 -right-8 text-4xl"
-            animate={{ rotate: [0, -20, 0], scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            ✨
-          </motion.span>
-          <h1 className="text-8xl md:text-[10rem] font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-4 animate-gradient leading-none">
+        <motion.div variants={itemVariants} className="mb-6">
+          <h1 className="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-4 leading-none">
             A Rehman
           </h1>
-          <motion.p
-            className="text-3xl md:text-4xl text-gray-400 font-light"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
+          <motion.p className="text-2xl md:text-3xl text-gray-400 font-light">
             Crafting Digital Experiences
           </motion.p>
         </motion.div>
 
         <motion.div
           variants={itemVariants}
-          className="text-2xl md:text-3xl text-gray-300 mb-8 h-[40px] flex items-center justify-center gap-2"
+          className="text-xl md:text-2xl text-gray-300 mb-8 flex items-center justify-center gap-2 h-[40px]"
         >
-          <Code2 className="w-8 h-8 text-blue-500" />
-          {/* Using react-simple-typewriter here */}
+          <Code2 className="w-6 h-6 text-blue-500" />
           <span>{text}</span>
         </motion.div>
 
@@ -184,14 +109,14 @@ export default function Hero() {
           variants={itemVariants}
           className="flex justify-center gap-6 mb-12"
         >
-          {socialLinks.map((item) => (
+          {socialLinks.map(({ icon: Icon, href, rotate }) => (
             <motion.a
-              key={item.href}
-              href={item.href}
+              key={href}
+              href={href}
               target="_blank"
               rel="noopener noreferrer"
               className="relative group"
-              whileHover={{ scale: 1.1, rotate: item.rotate }}
+              whileHover={{ scale: 1.1, rotate }}
               whileTap={{ scale: 0.95 }}
             >
               <motion.div
@@ -203,16 +128,13 @@ export default function Hero() {
                   ease: "easeInOut",
                 }}
               />
-              <item.icon className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors relative z-10" />
+              <Icon className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors relative z-10" />
             </motion.a>
           ))}
         </motion.div>
 
         <motion.div className="flex justify-center gap-4">
-          <a
-            href="/public/resume.pdf" // Make sure your resume is placed in the `public` folder
-            download
-          >
+          <a href="/resume.pdf" download>
             <motion.button
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
@@ -223,12 +145,6 @@ export default function Hero() {
                 <Star className="w-5 h-5" />
                 Download Resume
               </span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
             </motion.button>
           </a>
 
@@ -242,38 +158,7 @@ export default function Hero() {
               <Rocket className="w-5 h-5" />
               Contact Me
             </span>
-            <motion.div
-              className="absolute inset-0 bg-blue-500/10"
-              initial={{ scale: 0, opacity: 0 }}
-              whileHover={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
           </motion.button>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-gray-400 cursor-pointer"
-          >
-            <motion.div className="w-6 h-10 border-2 border-gray-400 rounded-full p-1">
-              <motion.div
-                className="w-1 h-2 bg-gray-400 rounded-full mx-auto"
-                animate={{ y: [0, 4, 0] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            </motion.div>
-          </motion.div>
         </motion.div>
       </motion.div>
     </section>

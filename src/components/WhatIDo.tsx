@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  FaCode,
-  FaReact,
-  FaJsSquare,
-  FaPaintBrush,
+  FaLaptopCode,
+  FaLightbulb,
+  FaCogs,
+  FaPencilRuler,
   FaServer,
   FaNodeJs,
   FaDatabase,
@@ -34,7 +34,10 @@ const Services: React.FC = () => {
   };
 
   return (
-    <section id="services" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+    <section
+      id="services"
+      className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gray-800"
+    >
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial="hidden"
@@ -56,57 +59,57 @@ const Services: React.FC = () => {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {/* Frontend Card */}
+          {/* UI Design Card */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -10, scale: 1.02 }}
             className="p-6 rounded-2xl bg-gray-900/50 backdrop-blur-lg transition-all border border-gray-800"
           >
             <div className="w-14 h-14 mb-6 rounded-2xl bg-gray-800 flex items-center justify-center">
-              <FaCode className="text-blue-400 text-2xl" />
+              <FaLaptopCode className="text-blue-400 text-2xl" />
             </div>
             <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-white">
-              Frontend Development
+              User Interface Design
             </h3>
             <p className="text-gray-400 mb-6 text-sm sm:text-base">
-              Building responsive and interactive user interfaces using modern
-              frameworks like React and Next.js.
+              Designing beautiful, responsive, and user-friendly web interfaces
+              using modern tools.
             </p>
             <div className="flex flex-wrap gap-2">
               <Badge
-                icon={<FaReact className="text-blue-400" />}
+                icon={<FaPencilRuler className="text-blue-400" />}
+                label="TailwindCSS"
+              />
+              <Badge
+                icon={<FaLightbulb className="text-blue-400" />}
+                label="UX Focused"
+              />
+              <Badge
+                icon={<FaCogs className="text-blue-400" />}
                 label="React"
               />
               <Badge
-                icon={<FaJsSquare className="text-blue-400" />}
+                icon={<FaLaptopCode className="text-blue-400" />}
                 label="Next.js"
-              />
-              <Badge
-                icon={<FaCode className="text-blue-400" />}
-                label="TypeScript"
-              />
-              <Badge
-                icon={<FaPaintBrush className="text-blue-400" />}
-                label="TailwindCSS"
               />
             </div>
           </motion.div>
 
-          {/* Backend Card */}
+          {/* Server Logic Card */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -10, scale: 1.02 }}
             className="p-6 rounded-2xl bg-gray-900/50 backdrop-blur-lg transition-all border border-gray-800"
           >
             <div className="w-14 h-14 mb-6 rounded-2xl bg-gray-800 flex items-center justify-center">
-              <FaServer className="text-pink-400 text-2xl" />
+              <FaCogs className="text-pink-400 text-2xl" />
             </div>
             <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-white">
-              Backend Development
+              Smart Server Logic
             </h3>
             <p className="text-gray-400 mb-6 text-sm sm:text-base">
-              Developing scalable server-side applications and APIs using
-              Node.js and modern databases.
+              Building secure and scalable backends with modern technologies for
+              smart web apps.
             </p>
             <div className="flex flex-wrap gap-2">
               <Badge
@@ -128,7 +131,7 @@ const Services: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* API Integration Card */}
+          {/* API Integration Card (Unchanged) */}
           <motion.div
             variants={cardVariants}
             whileHover={{ y: -10, scale: 1.02 }}
@@ -141,8 +144,8 @@ const Services: React.FC = () => {
               API Integration
             </h3>
             <p className="text-gray-400 mb-6 text-sm sm:text-base">
-              Seamlessly connecting web applications to third-party services and
-              external APIs for added functionality.
+              Seamlessly connecting apps with external services for enhanced
+              functionality.
             </p>
             <div className="flex flex-wrap gap-2">
               <Badge
