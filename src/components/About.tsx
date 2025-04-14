@@ -1,5 +1,4 @@
 import { useInView } from "react-intersection-observer";
-import { Code2, Star, Coffee, Users, Zap, Heart } from "lucide-react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 
@@ -7,13 +6,10 @@ export default function About() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   const stats = [
-    { icon: Coffee, value: 0, label: "Coffee Cups", color: "from-amber-500 to-orange-500" },
-    { icon: Code2, value: 10, label: "Projects Completed", color: "from-blue-500 to-cyan-500" },
-    { icon: Users, value: 5, label: "Happy Clients", color: "from-green-500 to-emerald-500" },
-    { icon: Star, value: 1, label: "Years Experience", color: "from-purple-500 to-pink-500" },
+    { value: 10, label: "Projects Completed" },
+    { value: 5, label: "Happy Clients" },
+    { value: 1, label: "Years Experience" },
   ];
-
-  const skills = ["React", "JavaScript", "Next.js", "TailwindCSS", "MongoDB"];
 
   return (
     <section ref={ref} className="py-16 px-4 bg-black text-white">
@@ -21,59 +17,29 @@ export default function About() {
         initial={{ opacity: 0, y: 30 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-3xl mx-auto space-y-10 text-center"
+        className="max-w-3xl mx-auto text-center space-y-10"
       >
-        <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text">
+        <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">
           About Me
         </h2>
 
         <p className="text-gray-300 text-lg leading-relaxed">
-          I'm a Full Stack Developer focused on building clean, fast, and modern web apps.
-          I love crafting sleek UIs and powerful backends using today's best tech.
+          I'm a Full Stack Developer focused on building clean, fast, and modern web apps. I love crafting sleek UIs and powerful backends using today's best tech.
         </p>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="bg-gray-900 rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-300"
+              className="bg-gray-900 rounded-xl p-6 shadow-md"
             >
-              <div
-                className={`w-10 h-10 mx-auto mb-2 flex items-center justify-center rounded-full bg-gradient-to-br ${stat.color}`}
-              >
-                <stat.icon className="w-5 h-5 text-white" />
-              </div>
-              <h3 className="text-2xl font-semibold">
+              <h3 className="text-3xl font-bold">
                 {inView && <CountUp end={stat.value} duration={2} />}
-                {stat.value === 5 && "+"}
+                {stat.label === "Happy Clients" && "+"}
               </h3>
-              <p className="text-sm text-gray-400 mt-1">{stat.label}</p>
+              <p className="text-gray-400 mt-2">{stat.label}</p>
             </div>
           ))}
-        </div>
-
-        {/* Skills */}
-        <div>
-          <h3 className="text-xl font-semibold mb-3 flex items-center justify-center gap-2">
-            <Zap className="text-blue-500 w-5 h-5" />
-            Skills
-          </h3>
-          <div className="flex flex-wrap justify-center gap-2">
-            {skills.map((skill) => (
-              <span
-                key={skill}
-                className="px-3 py-1 text-sm bg-gray-800 border border-gray-700 rounded-full text-gray-300"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
-          <Heart className="w-4 h-4 text-red-500" />
-          Passionate about beautiful code & great user experience
         </div>
       </motion.div>
     </section>
