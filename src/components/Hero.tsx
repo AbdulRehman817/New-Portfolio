@@ -44,11 +44,14 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
+      {/* Background grid effect */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="absolute inset-0 w-full h-full bg-[radial-gradient(#ffffff33_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"
+        className="absolute inset-0 w-full h-full bg-[radial-gradient(#ffffff33_1px,transparent_1px)] 
+          [background-size:16px_16px] 
+          [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"
       />
 
       <motion.div
@@ -63,6 +66,7 @@ export default function Hero() {
           },
         }}
       >
+        {/* Profile Image & Sparkles */}
         <motion.div
           className="mb-12"
           initial={{ scale: 0 }}
@@ -83,11 +87,19 @@ export default function Hero() {
               whileHover={{ rotate: 360 }}
               transition={{ duration: 1 }}
             >
-              <Sparkles className="w-16 h-16 text-blue-500" />
+              {/* Optional Image Inside Avatar */}
+              <img
+                src="/your-image.jpg"
+                alt="Profile"
+                className="w-16 h-16 object-cover rounded-full"
+              />
+              {/* Or use icon */}
+              {/* <Sparkles className="w-16 h-16 text-blue-500" /> */}
             </motion.div>
           </motion.div>
         </motion.div>
 
+        {/* Title & Subtitle */}
         <motion.div variants={itemVariants} className="mb-6">
           <h1 className="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-4 leading-none">
             A Rehman
@@ -97,6 +109,7 @@ export default function Hero() {
           </motion.p>
         </motion.div>
 
+        {/* Typewriter Effect */}
         <motion.div
           variants={itemVariants}
           className="text-xl md:text-2xl text-gray-300 mb-8 flex items-center justify-center gap-2 h-[40px]"
@@ -105,6 +118,7 @@ export default function Hero() {
           <span>{text}</span>
         </motion.div>
 
+        {/* Social Icons */}
         <motion.div
           variants={itemVariants}
           className="flex justify-center gap-6 mb-12"
@@ -133,7 +147,9 @@ export default function Hero() {
           ))}
         </motion.div>
 
+        {/* Action Buttons */}
         <motion.div className="flex justify-center gap-4">
+          {/* Resume Download */}
           <a href="/resume.pdf" download>
             <motion.button
               variants={itemVariants}
@@ -148,6 +164,7 @@ export default function Hero() {
             </motion.button>
           </a>
 
+          {/* Contact Me Button */}
           <motion.button
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}

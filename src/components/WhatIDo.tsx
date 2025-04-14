@@ -8,7 +8,6 @@ import {
   FaServer,
   FaNodeJs,
   FaDatabase,
-  FaShieldAlt,
   FaCloud,
   FaLayerGroup,
   FaLock,
@@ -27,12 +26,12 @@ const Badge: React.FC<BadgeProps> = ({ icon, label }) => (
   </div>
 );
 
-const Services: React.FC = () => {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
+const Services: React.FC = () => {
   return (
     <section
       id="services"
@@ -121,7 +120,7 @@ const Services: React.FC = () => {
                 label="GraphQL"
               />
               <Badge
-                icon={<FaShieldAlt className="text-pink-400" />}
+                icon={<FaDatabase className="text-pink-400" />}
                 label="PostgreSQL"
               />
               <Badge

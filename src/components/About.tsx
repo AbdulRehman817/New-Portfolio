@@ -28,6 +28,12 @@ export default function About() {
           new tools, refining my skills, and staying inspired by design and
           technology.
         </p>
+
+        <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
+          When I’m not coding, you can find me exploring new tech trends, or
+          enjoying a good book. Let’s connect and create something amazing
+          together!
+        </p>
       </motion.div>
     </section>
   );
