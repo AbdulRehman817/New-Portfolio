@@ -1,13 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  Code2,
-  Sparkles,
-  Rocket,
-  Star,
-} from "lucide-react";
+import { Github, Linkedin, Mail, Code2, Rocket, Star } from "lucide-react";
 import { useTypewriter } from "react-simple-typewriter";
 
 export default function Hero() {
