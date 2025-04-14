@@ -1,52 +1,8 @@
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Code2, Sparkles, Rocket, Star } from "lucide-react";
 import { useTypewriter } from "react-simple-typewriter";
-import gsap from "gsap";
 
 export default function Hero() {
-  const backgroundRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const bg = backgroundRef.current;
-    if (!bg) return;
-
-    const particles = Array.from({ length: 50 }).map(() => {
-      const el = document.createElement("div");
-      el.className = "absolute w-1 h-1 bg-blue-500/30 rounded-full";
-      bg.appendChild(el);
-      gsap.set(el, {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-      });
-      gsap.to(el, {
-        x: "+=" + (Math.random() * 100 - 50),
-        y: "+=" + (Math.random() * 100 - 50),
-        opacity: Math.random(),
-        duration: 2 + Math.random() * 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "none",
-      });
-      return el;
-    });
-
-    if (containerRef.current) {
-      gsap.to(containerRef.current, {
-        y: -20,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-      });
-    }
-
-    return () => {
-      particles.forEach(p => bg.removeChild(p));
-    };
-  }, []);
-
   const [text] = useTypewriter({
     words: ["Full Stack Developer", "UI/UX Designer", "Problem Solver", "Tech Enthusiast"],
     loop: true,
@@ -67,8 +23,6 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
-      <div ref={backgroundRef} className="absolute inset-0 overflow-hidden" />
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -77,7 +31,6 @@ export default function Hero() {
       />
 
       <motion.div
-        ref={containerRef}
         initial="hidden"
         animate="visible"
         className="relative z-10 text-center px-4 max-w-5xl mx-auto"
@@ -108,17 +61,17 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="mb-6 relative">
-          <h1 className="text-8xl md:text-[10rem] font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-4 animate-gradient leading-none">
+        <motion.div variants={itemVariants} className="mb-6">
+          <h1 className="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-4 leading-none">
             A Rehman
           </h1>
-          <motion.p className="text-3xl md:text-4xl text-gray-400 font-light">
+          <motion.p className="text-2xl md:text-3xl text-gray-400 font-light">
             Crafting Digital Experiences
           </motion.p>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="text-2xl md:text-3xl text-gray-300 mb-8 h-[40px] flex items-center justify-center gap-2">
-          <Code2 className="w-8 h-8 text-blue-500" />
+        <motion.div variants={itemVariants} className="text-xl md:text-2xl text-gray-300 mb-8 flex items-center justify-center gap-2 h-[40px]">
+          <Code2 className="w-6 h-6 text-blue-500" />
           <span>{text}</span>
         </motion.div>
 
@@ -155,12 +108,6 @@ export default function Hero() {
                 <Star className="w-5 h-5" />
                 Download Resume
               </span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
             </motion.button>
           </a>
 
@@ -174,12 +121,6 @@ export default function Hero() {
               <Rocket className="w-5 h-5" />
               Contact Me
             </span>
-            <motion.div
-              className="absolute inset-0 bg-blue-500/10"
-              initial={{ scale: 0, opacity: 0 }}
-              whileHover={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
           </motion.button>
         </motion.div>
       </motion.div>
