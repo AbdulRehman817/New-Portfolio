@@ -58,39 +58,6 @@ export default function Hero() {
           },
         }}
       >
-        {/* Profile Image & Sparkles */}
-        <motion.div
-          className="mb-12"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.8, type: "spring" }}
-        >
-          <motion.div
-            className="w-32 h-32 mx-auto relative"
-            whileHover={{ scale: 1.1 }}
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-xl opacity-50"
-              animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-              className="relative w-full h-full rounded-full bg-gray-900 flex items-center justify-center border-2 border-blue-500/30"
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 1 }}
-            >
-              {/* Optional Image Inside Avatar */}
-              <img
-                src="/your-image.jpg"
-                alt="Profile"
-                className="w-16 h-16 object-cover rounded-full"
-              />
-              {/* Or use icon */}
-              {/* <Sparkles className="w-16 h-16 text-blue-500" /> */}
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
         {/* Title & Subtitle */}
         <motion.div variants={itemVariants} className="mb-6">
           <h1 className="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-4 leading-none">
