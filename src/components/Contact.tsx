@@ -154,7 +154,7 @@ export default function Contact() {
                     href="tel:+1234567890"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
-                    +1 (234) 567-890
+                    +(92)3313301452
                   </a>
                 </div>
               </motion.div>
@@ -171,7 +171,7 @@ export default function Contact() {
                   <h3 className="text-lg font-semibold text-white mb-1">
                     Location
                   </h3>
-                  <p className="text-gray-400">San Francisco, CA</p>
+                  <p className="text-gray-400">PAKISTAN Karachi</p>
                 </div>
               </motion.div>
 
