@@ -6,7 +6,7 @@ A clean, animated, and responsive personal portfolio built using **React**, **Ty
 
 ## 🌐 Live Demo
 
-🎯 [View Portfolio Online](https://new-portfolio-zf8t.vercel.app)
+🎯 [View Portfolio Online](https://abdulrehmanweb.vercel.app/)
 
 ![Portfolio Preview](https://your-demo-image-or-gif-link.com)
 
