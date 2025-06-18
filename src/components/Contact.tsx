@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
@@ -7,6 +8,18 @@ export default function Contact() {
     triggerOnce: true,
     threshold: 0.2,
   });
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = () => {
+    // Optionally handle form submission logic here (e.g., send email)
+    // After submission, clear the fields
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -50,51 +63,49 @@ export default function Contact() {
             className="space-y-6"
           >
             <motion.div variants={itemVariants}>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
+              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                 Name
               </label>
               <motion.input
                 whileFocus={{ scale: 1.02 }}
                 type="text"
                 id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-white"
                 placeholder="Your name"
               />
             </motion.div>
             <motion.div variants={itemVariants}>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                 Email
               </label>
               <motion.input
                 whileFocus={{ scale: 1.02 }}
                 type="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-white"
                 placeholder="your@email.com"
               />
             </motion.div>
             <motion.div variants={itemVariants}>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-300 mb-2"
-              >
+              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                 Message
               </label>
               <motion.textarea
                 whileFocus={{ scale: 1.02 }}
                 id="message"
                 rows={6}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-white resize-none"
                 placeholder="Your message..."
               />
             </motion.div>
             <motion.button
+              onClick={handleSubmit}
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -126,9 +137,7 @@ export default function Contact() {
                   <Mail className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">
-                    Email
-                  </h3>
+                  <h3 className="text-lg font-semibold text-white mb-1">Email</h3>
                   <a
                     href="mailto:contact@example.com"
                     className="text-gray-400 hover:text-white transition-colors"
@@ -147,14 +156,12 @@ export default function Contact() {
                   <Phone className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">
-                    Phone
-                  </h3>
+                  <h3 className="text-lg font-semibold text-white mb-1">Phone</h3>
                   <a
                     href="tel:+1234567890"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
-                    +1 (234) 567-890
+                    +(92)3313301452
                   </a>
                 </div>
               </motion.div>
@@ -168,17 +175,13 @@ export default function Contact() {
                   <MapPin className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">
-                    Location
-                  </h3>
-                  <p className="text-gray-400">San Francisco, CA</p>
+                  <h3 className="text-lg font-semibold text-white mb-1">Location</h3>
+                  <p className="text-gray-400">PAKISTAN Karachi</p>
                 </div>
               </motion.div>
 
               <motion.div variants={itemVariants} className="pt-8">
-                <h3 className="text-lg font-semibold text-white mb-4">
-                  Follow Me
-                </h3>
+                <h3 className="text-lg font-semibold text-white mb-4">Follow Me</h3>
                 <div className="flex space-x-4">
                   <motion.a
                     href="https://github.com/AbdulRehman817"
