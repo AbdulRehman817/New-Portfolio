@@ -4,7 +4,7 @@ import { ExternalLink, Github, X, Code2 } from "lucide-react";
 import { useState } from "react";
 import Ecommerce from "../images/Ecommerce.png";
 import memeMaker from "../images/memeMaker.png";
-import WeatherApp from "../images/WeatherApp.png";
+import ChatApp from "../images/ChatApp.png";
 
 interface Project {
   title: string;
@@ -95,13 +95,12 @@ export default function Projects() {
     {
       title: "Weather App",
       description:
-        "This weather app, built using JavaScript, provides real-time weather updates for any location.",
-      longDescription:
-        "Users can search by city name to get the current temperature, weather conditions (like clear skies, rain, or cloudy), humidity, and wind speed. The app uses an API to fetch accurate weather data from a reliable source and displays it in a clean, user-friendly interface. The design is simple yet effective, focusing on delivering essential weather information at a glance. With responsive features, the app works seamlessly across devices, ensuring users can check the weather on the go.",
-      image: `${WeatherApp}`,
-      tech: ["Javascript", "CSS", "WeatherAPI"],
-      github: "https://github.com/AbdulRehman817/Weather-App",
-      demo: "https://weather-app-gules-alpha-61.vercel.app/",
+        "A chat app is a real-time messaging platform that allows users to communicate instantly through text, images, or other media.",
+      longDescription:"The Chat Application is a full-featured, real-time messaging platform developed using React.js for the frontend and Firebase (Firestore, Realtime Database, Authentication, and Storage) for the backend. It is designed to provide users with a smooth and secure chatting experience, similar to modern messaging platforms like WhatsApp or Messenger.",
+      image: `${ChatApp}`,
+      tech: ["ReactJS", "TailwindCSS", "Firebase"],
+      github: "https://github.com/AbdulRehman817/Chat-App",
+      demo: "https://chat-app-sc7o.vercel.app/ChatPage",
     },
   ];
 
