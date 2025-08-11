@@ -26,11 +26,6 @@ const Badge: React.FC<BadgeProps> = ({ icon, label }) => (
   </div>
 );
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
 const Services: React.FC = () => {
   return (
     <section
@@ -38,9 +33,11 @@ const Services: React.FC = () => {
       className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gray-800"
     >
       <div className="max-w-7xl mx-auto">
+        {/* Section Title */}
         <motion.div
-          initial="hidden"
-          whileInView="show"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
           className="text-center mb-12 sm:mb-16"
         >
@@ -52,15 +49,14 @@ const Services: React.FC = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {/* UI Design Card */}
           <motion.div
-            variants={cardVariants}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
             whileHover={{ y: -10, scale: 1.02 }}
             className="p-6 rounded-2xl bg-gray-900/50 backdrop-blur-lg transition-all border border-gray-800"
           >
@@ -96,7 +92,10 @@ const Services: React.FC = () => {
 
           {/* Server Logic Card */}
           <motion.div
-            variants={cardVariants}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
             whileHover={{ y: -10, scale: 1.02 }}
             className="p-6 rounded-2xl bg-gray-900/50 backdrop-blur-lg transition-all border border-gray-800"
           >
@@ -130,9 +129,12 @@ const Services: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* API Integration Card (Unchanged) */}
+          {/* API Integration Card */}
           <motion.div
-            variants={cardVariants}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
             whileHover={{ y: -10, scale: 1.02 }}
             className="p-6 rounded-2xl bg-gray-900/50 backdrop-blur-lg transition-all border border-gray-800"
           >
@@ -165,7 +167,7 @@ const Services: React.FC = () => {
               />
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

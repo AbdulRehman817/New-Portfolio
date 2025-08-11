@@ -1,142 +1,128 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Code2, Rocket, Star } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { useTypewriter } from "react-simple-typewriter";
 
 export default function Hero() {
   const [text] = useTypewriter({
-    words: [
-      "Full Stack Developer",
-      "UI/UX Designer",
-      "Problem Solver",
-      "Tech Enthusiast",
-    ],
+    words: ["Full Stack Developer", "UI/UX Designer", "Problem Solver"],
     loop: true,
-    typeSpeed: 100,
-    deleteSpeed: 50,
+    typeSpeed: 80,
+    deleteSpeed: 40,
   });
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/AbdulRehman817", rotate: 5 },
-    {
-      icon: Linkedin,
-      href: "https://linkedin.com/in/abdul-rehman-7aa108328/",
-      rotate: -5,
-    },
-    { icon: Mail, href: "mailto:abdulrehmanbey1718@gmail.com", rotate: 5 },
+    { icon: Github, href: "https://github.com/AbdulRehman817" },
+    { icon: Linkedin, href: "https://linkedin.com/in/abdul-rehman-7aa108328/" },
+    { icon: Mail, href: "mailto:abdulrehmanbey1718@gmail.com" },
   ];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
-
   return (
-    <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-900">
-      {/* Background grid effect */}
+    <section className="min-h-screen flex flex-col justify-center items-center relative bg-gray-900 text-center px-4 overflow-hidden">
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(#4b556330_1px,transparent_1px)] [background-size:20px_20px] opacity-20" />
+
+      {/* Soft Gradient Light Glow */}
+      <motion.div
+        className="absolute w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[180px]"
+        animate={{ x: ["-10%", "10%", "-10%"], y: ["-10%", "10%", "-10%"] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Title */}
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-5xl md:text-6xl font-extrabold text-white mb-3 tracking-tight drop-shadow-md relative z-10"
+      >
+        Abdul Rehman
+      </motion.h1>
+
+      {/* Subtitle */}
+      <motion.p
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.15 }}
+        className="text-lg md:text-xl text-gray-400 mb-6 relative z-10"
+      >
+        Crafting clean & modern web solutions
+      </motion.p>
+
+      {/* Typewriter with color animation */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-        className="absolute inset-0 w-full h-full bg-[radial-gradient(#ffffff33_1px,transparent_1px)] 
-          [background-size:16px_16px] 
-          [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"
-      />
-
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 text-center px-4 max-w-5xl mx-auto"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.3, delayChildren: 0.2 },
-          },
-        }}
+        transition={{ delay: 0.3 }}
+        className="text-lg md:text-xl font-medium h-[28px] mb-10 animate-colorChange relative z-10"
       >
-        {/* Title & Subtitle */}
-        <motion.div variants={itemVariants} className="mb-6">
-          <h1 className="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-4 leading-none">
-            A Rehman
-          </h1>
-          <motion.p className="text-2xl md:text-3xl text-gray-400 font-light">
-            Crafting Digital Experiences
-          </motion.p>
-        </motion.div>
-
-        {/* Typewriter Effect */}
-        <motion.div
-          variants={itemVariants}
-          className="text-xl md:text-2xl text-gray-300 mb-8 flex items-center justify-center gap-2 h-[40px]"
-        >
-          <Code2 className="w-6 h-6 text-blue-500" />
-          <span>{text}</span>
-        </motion.div>
-
-        {/* Social Icons */}
-        <motion.div
-          variants={itemVariants}
-          className="flex justify-center gap-6 mb-12"
-        >
-          {socialLinks.map(({ icon: Icon, href, rotate }) => (
-            <motion.a
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative group"
-              whileHover={{ scale: 1.1, rotate }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <Icon className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors relative z-10" />
-            </motion.a>
-          ))}
-        </motion.div>
-
-        {/* Action Buttons */}
-        <motion.div className="flex justify-center gap-4">
-          {/* Resume Download */}
-          <a href="/resume.pdf" download>
-            <motion.button
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all relative overflow-hidden group"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                <Star className="w-5 h-5" />
-                Download Resume
-              </span>
-            </motion.button>
-          </a>
-
-          {/* Contact Me Button */}
-          <motion.button
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 border-2 border-blue-500/50 text-white rounded-full font-semibold hover:border-blue-500 transition-colors relative overflow-hidden group"
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              <Rocket className="w-5 h-5" />
-              Contact Me
-            </span>
-          </motion.button>
-        </motion.div>
+        {text}
       </motion.div>
+
+      {/* Social Links - floating animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.4 }}
+        className="flex gap-6 mb-12 relative z-10"
+      >
+        {socialLinks.map(({ icon: Icon, href }, i) => (
+          <motion.a
+            key={href}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            animate={{ y: [0, -6, 0] }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              delay: i * 0.25,
+              ease: "easeInOut",
+            }}
+            whileHover={{
+              scale: 1.2,
+              rotate: 4,
+              boxShadow: "0px 0px 20px rgba(59, 130, 246, 0.4)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="p-3 bg-gray-800/80 backdrop-blur-sm rounded-full text-gray-300 hover:text-white hover:bg-gray-700 transition-all shadow-md"
+          >
+            <Icon className="w-5 h-5" />
+          </motion.a>
+        ))}
+      </motion.div>
+
+      {/* Action Buttons */}
+      <div className="flex gap-5 relative z-10">
+        <motion.a
+          href="/resume.pdf"
+          download
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0px 0px 20px rgba(59, 130, 246, 0.6)",
+          }}
+          whileTap={{ scale: 0.95 }}
+          className="px-6 py-2 bg-blue-500 text-white rounded-full font-medium transition-all shadow-md"
+        >
+          Download Resume
+        </motion.a>
+        <motion.a
+          href="#contact"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55 }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0px 0px 20px rgba(59, 130, 246, 0.6)",
+          }}
+          whileTap={{ scale: 0.95 }}
+          className="px-6 py-2 border border-blue-400 text-blue-400 hover:bg-blue-500 hover:text-white rounded-full font-medium transition-all shadow-md"
+        >
+          Contact Me
+        </motion.a>
+      </div>
     </section>
   );
 }
