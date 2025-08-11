@@ -1,93 +1,69 @@
-# 💼 My Developer Portfolio
+# React + TypeScript + Vite
 
-A clean, animated, and responsive personal portfolio built using **React**, **TypeScript**, **Framer Motion**, and **GSAP**, designed to showcase projects, skills, and contact information in an elegant, interactive layout.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## 🌐 Live Demo
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-🎯 [View Portfolio Online](https://abdulrehmanweb.vercel.app/)
+## Expanding the ESLint configuration
 
-![Portfolio Preview](https://your-demo-image-or-gif-link.com)
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
----
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-## 🚀 Tech Stack
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
-- ⚛️ **React**
-- 🔷 **TypeScript**
-- 🎞 **Framer Motion**
-- 💚 **GSAP (GreenSock Animation Platform)**
-- 🧩 **Lucide Icons**
-- 💥 **React Icons + Font Awesome**
-- 🎨 **Styled-Components** / **Sass**
-- 🗂 **Project Management Friendly Structure**
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
----
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-## 📦 Installation
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-```bash
-# Clone the repository
-git clone https://github.com/your-username/your-portfolio.git
-
-# Navigate to the project folder
-cd your-portfolio
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-
-
-✨ Features
-💻 Fully responsive design for all screen sizes
-
-🎬 Smooth animations using Framer Motion and GSAP
-
-🎨 Custom icon integration using Lucide, Font Awesome, and React Icons
-
-🧑‍💻 Clean and maintainable code using TypeScript
-
-🖌 Modern design with Styled-Components or Sass
-
-📋 Easy to manage and extend
-
-
-🧠 Learnings
-This portfolio helped me improve my skills in:
-
-Type-safe React development
-
-UI animations with Framer Motion & GSAP
-
-Icon management across multiple libraries
-
-Styling with component-based architecture
-
-
-🛠 Commands
-bash
-Copy
-Edit
-npm run dev       # Start local server
-npm run build     # Create production build
-npm run preview   # Preview production build
-
-
-
-📫 Connect with Me
-Portfolio: https://new-portfolio-zf8t.vercel.app
-
-LinkedIn:https://linkedin.com/in/abdul-rehman-7aa108328/
-
-GitHub: https://github.com/AbdulRehman817
-
-
----
-
-If you want, I can save this as a file and send it to you directly. Just give me your portfolio link or replace the placeholders above.
-
-Would you like that?
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
