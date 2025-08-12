@@ -408,7 +408,7 @@ export default function Contact() {
                   },
                   {
                     icon: <Linkedin className="w-5 h-5 text-blue-500" />,
-                    href: "https://linkedin.com/in/abdul-rehman-7aa108328/",
+                    href: "https://www.linkedin.com/in/abdulrehman1718/",
                     rotate: -5,
                   },
                   {

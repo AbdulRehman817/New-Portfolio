@@ -19,7 +19,7 @@ export default function Hero() {
 
   const socialLinks = [
     { icon: Github, href: "https://github.com/AbdulRehman817" },
-    { icon: Linkedin, href: "https://linkedin.com/in/abdulrehman1718/" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/abdulrehman1718/" },
     { icon: Mail, href: "mailto:abdulrehmanbey1718@gmail.com" },
   ];
 
