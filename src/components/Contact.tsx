@@ -243,7 +243,7 @@ export default function Contact() {
   };
 
   return (
-    <section ref={ref} className="py-20 bg-gray-800">
+    <section ref={ref} id="Contact" className="py-20 bg-gray-800">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

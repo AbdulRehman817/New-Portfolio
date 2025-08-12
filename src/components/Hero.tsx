@@ -3,6 +3,13 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { useTypewriter } from "react-simple-typewriter";
 
 export default function Hero() {
+  const handleScrollToContact = () => {
+    const section = document.getElementById("Contact");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   const [text] = useTypewriter({
     words: ["Full Stack Developer", "UI/UX Designer", "Problem Solver"],
     loop: true,
@@ -12,7 +19,7 @@ export default function Hero() {
 
   const socialLinks = [
     { icon: Github, href: "https://github.com/AbdulRehman817" },
-    { icon: Linkedin, href: "https://linkedin.com/in/abdul-rehman-7aa108328/" },
+    { icon: Linkedin, href: "https://linkedin.com/in/abdulrehman1718/" },
     { icon: Mail, href: "mailto:abdulrehmanbey1718@gmail.com" },
   ];
 
@@ -33,7 +40,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-5xl md:text-6xl font-extrabold text-white mb-3 tracking-tight drop-shadow-md relative z-10"
+        className="text-5xl md:text-6xl font-extrabold bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent mb-3 tracking-tight drop-shadow-md relative z-10"
       >
         Abdul Rehman
       </motion.h1>
@@ -109,7 +116,7 @@ export default function Hero() {
           Download Resume
         </motion.a>
         <motion.a
-          href="#contact"
+          onClick={handleScrollToContact}
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55 }}
@@ -117,8 +124,7 @@ export default function Hero() {
             scale: 1.05,
             boxShadow: "0px 0px 20px rgba(59, 130, 246, 0.6)",
           }}
-          whileTap={{ scale: 0.95 }}
-          className="px-6 py-2 border border-blue-400 text-blue-400 hover:bg-blue-500 hover:text-white rounded-full font-medium transition-all shadow-md"
+          className="cursor-pointer px-6 py-2  text-white rounded-full font-medium transition-all shadow-md"
         >
           Contact Me
         </motion.a>

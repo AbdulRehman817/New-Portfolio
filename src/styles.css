@@ -1,7 +1,3 @@
-html {
-  scroll-behavior: smooth;
-}
-
 @keyframes fadeSlideUp {
   from {
     opacity: 0;

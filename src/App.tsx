@@ -4,15 +4,11 @@ import WhatIDo from "./components/WhatIDo";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-import PalestineFlag from "./components/PalestineFlag";
 import "./styles.css"; // <- make sure to import your styles
 
 function App() {
   return (
     <main className="bg-gray-900 text-white relative">
-      {/* Palestine Flag */}
-      <PalestineFlag />
-
       {/* Background pattern */}
       <div className="fixed inset-0 bg-[radial-gradient(#1e1e1e_1px,transparent_1px)] [background-size:32px_32px] opacity-40 pointer-events-none animate-pulse" />
 
